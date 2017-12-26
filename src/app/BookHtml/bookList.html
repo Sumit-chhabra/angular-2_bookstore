@@ -1,0 +1,68 @@
+﻿
+
+<div style="background-color:khaki;">
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 col-sm-offset-9">
+                <input type="text" placeholder="search Book" [(ngModel)]='searchText' class="pull-left" />&nbsp;
+                <button type="submit" class="glyphicon glyphicon-search btn-primary" (click)="searchBook()"></button>
+
+            </div>
+
+        </div>
+        <br />
+        <div class="row">
+            <div *ngFor="let book of BookDetails;trackBy:trackById">
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="thumbnail">
+
+                        <img src="{{book.imageUrl}}" alt="BookImage" class="image img-responsive img-thumbnail" />
+
+                        <div>
+                            <h4 class="pull-right"><b>{{book.price | currency:'USD':true:'1.2'}}</b></h4>
+                            <h3><a class="pull-left" [routerLink]="['/books',book.id]">{{book.name}}</a></h3>
+                        </div>
+
+                        <br />
+                        <br />
+
+                        <p>
+                            <b>Rating: </b> <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                            <br />
+
+                            <b>Author: </b>{{book.author}}
+                            <br />
+                            <b>Genre: </b>{{book.genre}}
+                            <br />
+                        </p>
+
+
+                        <p *ngIf="book.inStock" class="pull-right"><strong class="text-success">InStock</strong></p>
+
+                        <p *ngIf="!book.inStock" class="pull-right"><strong class="text-danger">Out of Stock</strong></p>
+                        <br />
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="!BookDetails">
+            <h3>{{statusMessage}}</h3>
+
+        </div>
+        <div *ngIf="BookDetails && BookDetails.length==0">
+
+            <h3 class="text-center">No Book is available</h3>
+        </div>
+    </div>
+</div>
+<br />
+<br />

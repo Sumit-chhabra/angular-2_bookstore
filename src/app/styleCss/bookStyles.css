@@ -1,0 +1,21 @@
+﻿.image
+{
+    width:100px;
+    height:100px;
+}
+
+.bigImage {
+    width:300px;
+    height:400px;
+    padding-left:5px;
+}
+.description{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:medium;
+    
+    
+}
+.background{
+
+    background-color:black;
+}
